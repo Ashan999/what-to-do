@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete Sri Lankan education and career guide. Navigate your future after O/L and A/L exams – university pathways, NVQ vocational training, Middle East employment, foreign language programs.">
+    <meta property="og:title" content="What to DO - Complete Sri Lankan Education & Career Guide">
+    <meta property="og:description" content="Navigate your future after O/L and A/L examinations. University pathways, NVQ training, overseas employment, professional certifications – all in one guide.">
+    <meta property="og:type" content="website">
     <title>What to DO - Complete Sri Lankan Education & Career Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,24 +15,24 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&display=swap');
 
+        html, body {
+            overflow-x: hidden;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #f1f5f9 100%);
             min-height: 100vh;
-            overflow-x: hidden;
         }
         body.lang-sinhala { font-family: 'Noto Sans Sinhala', sans-serif; }
 
-        /* Animated gradient background */
+        /* Gradient background (simplified - no heavy animation) */
         body::before {
             content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(125deg, #e0f2fe 0%, transparent 40%, #fef3c7 70%, #ecfdf5 100%);
             opacity: 0.4; pointer-events: none; z-index: -1;
-            animation: bgShift 15s ease-in-out infinite alternate;
         }
-        @keyframes bgShift {
-            0% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0.5; transform: scale(1.05) rotate(1deg); }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
         }
 
         .hidden { display: none !important; }
@@ -55,21 +59,13 @@
         }
 
         .card-hover {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            overflow: hidden;
-        }
-        .card-hover::before {
-            content: ''; position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.6s ease;
         }
         .card-hover:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.12);
         }
-        .card-hover:hover::before { left: 100%; }
 
         .ref-code {
             font-family: 'Monaco', 'Courier New', monospace;
@@ -88,16 +84,12 @@
         }
 
         .whatsapp-float {
-            animation: float 3s ease-in-out infinite;
             transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 44px; min-height: 44px;
         }
         .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.4);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+            transform: scale(1.08);
+            box-shadow: 0 12px 24px rgba(34, 197, 94, 0.3);
         }
 
         .grid-cascade { animation: cascadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -156,6 +148,26 @@
             animation: modalSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
         }
+        @media (max-width: 768px) {
+            .modal-box { max-height: 85dvh; -webkit-overflow-scrolling: touch; padding: 1rem; }
+            .btn-mobile-full { width: 100%; }
+            .table-responsive .course-table, .table-responsive .salary-table { display: none !important; }
+            .table-responsive .table-cards-mobile { display: block; }
+            body { font-size: 15px; }
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+        }
+        @media (min-width: 769px) {
+            .table-responsive .table-cards-mobile { display: none !important; }
+        }
+        .table-card-mobile {
+            display: block; background: #fff; border: 1px solid #e2e8f0; border-radius: 0.5rem;
+            padding: 1rem; margin-bottom: 0.75rem; font-size: 0.875rem;
+        }
+        .table-card-mobile .card-cell { margin-bottom: 0.25rem; }
+        .table-card-mobile .card-cell strong { display: inline-block; min-width: 5rem; }
+        :focus-visible { outline: 2px solid #3b82f6; outline-offset: 2px; }
+        .grade-option, .tab-btn, .nvq-level-header, .detail-btn, .btn-glow { min-height: 44px; }
         @keyframes modalSlide {
             from { opacity: 0; transform: translateY(-20px) scale(0.95); }
             to { opacity: 1; transform: translateY(0) scale(1); }
@@ -242,17 +254,22 @@
     </style>
 </head>
 <body>
+<a id="skip-link" href="#main-content" class="sr-only-focusable">Skip to main content</a>
+<style>.sr-only-focusable { position: absolute; left: -9999px; z-index: 999; padding: 1rem; background: #1d4ed8; color: white; } .sr-only-focusable:focus { left: 0; }</style>
 
 <!-- NAVIGATION -->
-<nav id="mainNav" class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-blue-100/80 shadow-sm transition-all duration-300">
+<header>
+<nav id="mainNav" class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-blue-100/80 shadow-sm transition-all duration-300" aria-label="Main navigation">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
         <div id="navBrand" class="text-2xl font-black text-blue-700 transition-colors">What to DO</div>
-        <button onclick="toggleLanguage()" id="langBtn" class="px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 btn-glow">සිංහල</button>
+        <button data-action="toggleLanguage" id="langBtn" class="px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg font-semibold transition-all duration-300 hover:scale-105 active:scale-95 btn-glow" aria-label="Switch language">සිංහල</button>
     </div>
 </nav>
+</header>
 
+<main id="main-content">
 <!-- ========== HOME PAGE ========== -->
-<div id="homePage" class="fade-in">
+<section id="homePage" class="fade-in" aria-labelledby="heroTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
         <div class="text-center mb-16">
             <h1 id="heroTitle" class="text-5xl md:text-6xl font-black mb-6 leading-tight hero-gradient">What to DO</h1>
@@ -260,7 +277,7 @@
             <p id="heroDesc" class="text-lg text-slate-600 mb-12">Navigate your future after O/L and A/L examinations</p>
 
             <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <button onclick="showPage('olDecisionPage')" class="group p-8 bg-white rounded-2xl border-2 border-blue-200 hover:border-blue-500 card-hover text-left transition-all duration-300 slide-up" style="animation-delay: 0.1s; animation-fill-mode: both;">
+                <button data-action="showPage" data-page="olDecisionPage" class="group p-8 bg-white rounded-2xl border-2 border-blue-200 hover:border-blue-500 card-hover text-left transition-all duration-300 slide-up" style="animation-delay: 0.1s; animation-fill-mode: both;">
                     <div class="text-4xl mb-4">🎓</div>
                     <h2 id="cardOlTitle" class="text-3xl font-bold text-blue-700 mb-3">After O/L Exams</h2>
                     <p id="cardOlDesc" class="text-slate-600 mb-6 text-lg">Navigate your options after completing your O/L examination</p>
@@ -268,7 +285,7 @@
                         <span id="exploreOl">Explore</span> <i class="fas fa-chevron-right ml-2"></i>
                     </div>
                 </button>
-                <button onclick="showPage('alDecisionPage')" class="group p-8 bg-white rounded-2xl border-2 border-orange-200 hover:border-orange-500 card-hover text-left transition-all duration-300 slide-up" style="animation-delay: 0.2s; animation-fill-mode: both;">
+                <button data-action="showPage" data-page="alDecisionPage" class="group p-8 bg-white rounded-2xl border-2 border-orange-200 hover:border-orange-500 card-hover text-left transition-all duration-300 slide-up" style="animation-delay: 0.2s; animation-fill-mode: both;">
                     <div class="text-4xl mb-4">📜</div>
                     <h2 id="cardAlTitle" class="text-3xl font-bold text-orange-700 mb-3">After A/L Exams</h2>
                     <p id="cardAlDesc" class="text-slate-600 mb-6 text-lg">Discover university pathways and career options after A/L exams</p>
@@ -279,28 +296,28 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-4 border-t border-blue-100 pt-12">
-                <button onclick="openFeedback()" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all flex items-center justify-center gap-2 btn-glow hover:scale-105">
+                <button data-action="openModal" data-modal="feedbackModal" class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all flex items-center justify-center gap-2 btn-glow hover:scale-105 btn-mobile-full">
                     <i class="fas fa-envelope text-blue-700"></i>
                     <span id="contactBtn" class="text-blue-700 font-semibold">Contact Us</span>
                 </button>
-                <a href="https://wa.me/971524186102" target="_blank" rel="noopener noreferrer" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-all flex items-center justify-center gap-2 btn-glow hover:scale-105">
+                <a href="https://wa.me/971524186102" target="_blank" rel="noopener noreferrer" class="p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-all flex items-center justify-center gap-2 btn-glow hover:scale-105 btn-mobile-full" aria-label="Contact via WhatsApp">
                     <i class="fas fa-phone text-green-700"></i>
                     <span class="text-green-700 font-semibold">WhatsApp</span>
                 </a>
-                <a href="#" onclick="openFeedback(); return false;" class="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer btn-glow hover:scale-105">
+                <button data-action="openModal" data-modal="feedbackModal" class="p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer btn-glow hover:scale-105 btn-mobile-full">
                     <i class="fas fa-file text-purple-700"></i>
                     <span id="suggestBtn" class="text-purple-700 font-semibold">Suggestions</span>
                 </a>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ========== AFTER O/L DECISION PAGE ========== -->
-<div id="olDecisionPage" class="hidden fade-in">
+<section id="olDecisionPage" class="hidden fade-in" aria-labelledby="olDecisionTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('homePage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="homePage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <h1 id="olDecisionTitle" class="text-4xl font-bold text-blue-900 mb-2">After O/L Exams</h1>
@@ -308,25 +325,25 @@
             <p class="text-sm text-slate-400 ref-code">REF_CODE: 101</p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-            <button onclick="showPage('olPassedPage')" class="group p-8 bg-white border-2 border-green-200 hover:border-green-500 rounded-2xl card-hover">
-                <div class="text-5xl mb-4">✅</div>
+            <button data-action="showPage" data-page="olPassedPage" class="group p-8 bg-white border-2 border-green-200 hover:border-green-500 rounded-2xl card-hover">
+                <div class="text-5xl mb-4" aria-hidden="true">✅</div>
                 <h3 id="olPassedChoice" class="text-2xl font-bold text-green-700 mb-3">I PASSED O/L</h3>
                 <p id="olPassedDesc" class="text-slate-600">Congratulations! Choose your A/L stream and plan your university path.</p>
             </button>
-            <button onclick="showPage('olFailedPage')" class="group p-8 bg-white border-2 border-orange-200 hover:border-orange-500 rounded-2xl card-hover">
+            <button data-action="showPage" data-page="olFailedPage" class="group p-8 bg-white border-2 border-orange-200 hover:border-orange-500 rounded-2xl card-hover">
                 <div class="text-5xl mb-4">➡️</div>
                 <h3 id="olFailedChoice" class="text-2xl font-bold text-orange-700 mb-3">I FAILED / DIDN'T PASS O/L</h3>
                 <p id="olFailedDesc" class="text-slate-600">Don't worry! You have 50+ pathways to success including NVQ and foreign employment.</p>
             </button>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ========== O/L PASSED PAGE ========== -->
-<div id="olPassedPage" class="hidden fade-in">
+<section id="olPassedPage" class="hidden fade-in" aria-labelledby="olPassedTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('olDecisionPage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="olDecisionPage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <div class="success-box mb-6">
@@ -343,33 +360,33 @@
             <div class="mb-6">
                 <label class="block text-lg font-bold text-slate-800 mb-3"><i class="fas fa-calculator mr-2 text-blue-700"></i><span id="mathLabel">Mathematics Grade:</span></label>
                 <div class="flex flex-wrap gap-3">
-                    <button onclick="selectMathGrade('A')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">A</button>
-                    <button onclick="selectMathGrade('B')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">B</button>
-                    <button onclick="selectMathGrade('C')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">C</button>
-                    <button onclick="selectMathGrade('S')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">S Pass</button>
+                    <button data-action="selectMathGrade" data-grade="A" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">A</button>
+                    <button data-action="selectMathGrade" data-grade="B" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">B</button>
+                    <button data-action="selectMathGrade" data-grade="C" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">C</button>
+                    <button data-action="selectMathGrade" data-grade="S" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">S Pass</button>
                 </div>
             </div>
             <div class="mb-6">
                 <label class="block text-lg font-bold text-slate-800 mb-3"><i class="fas fa-flask mr-2 text-blue-700"></i><span id="scienceLabel">Science Grade:</span></label>
                 <div class="flex flex-wrap gap-3">
-                    <button onclick="selectScienceGrade('A')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">A</button>
-                    <button onclick="selectScienceGrade('B')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">B</button>
-                    <button onclick="selectScienceGrade('C')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">C</button>
-                    <button onclick="selectScienceGrade('S')" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">S Pass</button>
+                    <button data-action="selectScienceGrade" data-grade="A" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">A</button>
+                    <button data-action="selectScienceGrade" data-grade="B" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">B</button>
+                    <button data-action="selectScienceGrade" data-grade="C" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">C</button>
+                    <button data-action="selectScienceGrade" data-grade="S" class="grade-option px-6 py-3 border-2 border-slate-300 rounded-lg font-bold text-lg hover:border-blue-500 transition">S Pass</button>
                 </div>
             </div>
-            <button onclick="resetGradeFilter()" class="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg font-semibold transition" id="resetBtn">Reset Filter</button>
+            <button data-action="resetGradeFilter" class="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg font-semibold transition" id="resetBtn">Reset Filter</button>
         </div>
 
         <div id="streamsContainer" class="grid md:grid-cols-2 gap-6"></div>
     </div>
-</div>
+</section>
 
 <!-- ========== O/L FAILED PAGE ========== -->
-<div id="olFailedPage" class="hidden fade-in">
+<section id="olFailedPage" class="hidden fade-in" aria-labelledby="olFailedTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('olDecisionPage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="olDecisionPage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <div class="info-box mb-6">
@@ -380,13 +397,13 @@
         </div>
         <div id="olFailedContainer" class="grid gap-6"></div>
     </div>
-</div>
+</section>
 
 <!-- ========== AFTER A/L DECISION PAGE ========== -->
-<div id="alDecisionPage" class="hidden fade-in">
+<section id="alDecisionPage" class="hidden fade-in" aria-labelledby="alDecisionTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('homePage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="homePage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <h1 id="alDecisionTitle" class="text-4xl font-bold text-blue-900 mb-2">After A/L Exams</h1>
@@ -394,25 +411,25 @@
             <p class="text-sm text-slate-400 ref-code">REF_CODE: 102</p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-            <button onclick="showPage('alPassedPage')" class="group p-8 bg-white border-2 border-green-200 hover:border-green-500 rounded-2xl card-hover">
+            <button data-action="showPage" data-page="alPassedPage" class="group p-8 bg-white border-2 border-green-200 hover:border-green-500 rounded-2xl card-hover">
                 <div class="text-5xl mb-4">✅</div>
                 <h3 id="alPassedChoice" class="text-2xl font-bold text-green-700 mb-3">I PASSED A/L</h3>
                 <p id="alPassedDesc" class="text-slate-600">Excellent! Multiple university pathways and career options await you.</p>
             </button>
-            <button onclick="showPage('alFailedPage')" class="group p-8 bg-white border-2 border-orange-200 hover:border-orange-500 rounded-2xl card-hover">
+            <button data-action="showPage" data-page="alFailedPage" class="group p-8 bg-white border-2 border-orange-200 hover:border-orange-500 rounded-2xl card-hover">
                 <div class="text-5xl mb-4">➡️</div>
                 <h3 id="alFailedChoice" class="text-2xl font-bold text-orange-700 mb-3">I FAILED A/L</h3>
                 <p id="alFailedDesc" class="text-slate-600">60+ alternative pathways available. NVQ, certifications, foreign employment, and more!</p>
             </button>
         </div>
     </div>
-</div>
+</section>
 
 <!-- ========== A/L PASSED PAGE ========== -->
-<div id="alPassedPage" class="hidden fade-in">
+<section id="alPassedPage" class="hidden fade-in" aria-labelledby="alPassedTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('alDecisionPage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="alDecisionPage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <div class="success-box mb-6">
@@ -423,13 +440,13 @@
         </div>
         <div id="alPassedContainer" class="grid gap-6"></div>
     </div>
-</div>
+</section>
 
 <!-- ========== A/L FAILED PAGE ========== -->
-<div id="alFailedPage" class="hidden fade-in">
+<section id="alFailedPage" class="hidden fade-in" aria-labelledby="alFailedTitle">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-        <button onclick="showPage('alDecisionPage')" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
-            <i class="fas fa-chevron-left"></i> <span class="back-btn-text">Back</span>
+        <button data-action="showPage" data-page="alDecisionPage" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all mb-8 back-btn btn-glow">
+            <i class="fas fa-chevron-left" aria-hidden="true"></i> <span class="back-btn-text">Back</span>
         </button>
         <div class="mb-12">
             <div class="info-box mb-6">
@@ -440,46 +457,48 @@
         </div>
         <div id="alFailedContainer" class="grid gap-6"></div>
     </div>
-</div>
+</section>
+
+</main>
 
 <!-- ========== FLOATING WHATSAPP ========== -->
-<a href="https://wa.me/971524186102" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition whatsapp-float z-40">
-    <i class="fab fa-whatsapp text-2xl"></i>
+<a href="https://wa.me/971524186102" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition whatsapp-float z-40 flex items-center justify-center" aria-label="Contact via WhatsApp">
+    <i class="fab fa-whatsapp text-2xl" aria-hidden="true"></i>
 </a>
 
 <!-- ========== FEEDBACK MODAL ========== -->
-<div id="feedbackModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+<div id="feedbackModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 modal-overlay" data-action="closeModalOnOverlay" data-modal="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
     <div class="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl modal-box">
         <div class="flex justify-between items-center mb-6">
             <h3 id="feedbackTitle" class="text-2xl font-bold text-blue-900">Send Feedback</h3>
-            <button onclick="closeFeedback()" class="text-slate-400 hover:text-slate-600 text-2xl"><i class="fas fa-times"></i></button>
+            <button data-action="closeFeedback" class="text-slate-400 hover:text-slate-600 text-2xl min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close feedback modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
-        <textarea id="feedbackText" placeholder="Your feedback, suggestions, or error reports..." class="w-full p-3 border border-blue-200 rounded-lg mb-4 focus:outline-none focus:border-blue-500 min-h-32"></textarea>
-        <button id="feedbackSend" onclick="sendFeedback()" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition">Send Feedback</button>
+        <textarea id="feedbackText" placeholder="Your feedback, suggestions, or error reports..." class="w-full p-3 border border-blue-200 rounded-lg mb-4 focus:outline-none focus:border-blue-500 min-h-32" aria-label="Feedback text"></textarea>
+        <button id="feedbackSend" data-action="sendFeedback" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition">Send Feedback</button>
         <p id="feedbackNote" class="text-xs text-slate-500 mt-4 text-center">Your email client will open with the feedback ready to send.</p>
     </div>
 </div>
 
 <!-- ========== NVQ DETAIL MODAL ========== -->
-<div id="nvqModal" class="hidden modal-overlay" onclick="closeModalOnOverlay(event, 'nvqModal')">
+<div id="nvqModal" class="hidden modal-overlay" data-action="closeModalOnOverlay" data-modal="nvqModal" role="dialog" aria-modal="true" aria-labelledby="nvqModalTitle">
     <div class="modal-box scrollbar-thin">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h2 class="text-3xl font-black text-blue-900">🏫 NVQ Vocational Training</h2>
+                <h2 id="nvqModalTitle" class="text-3xl font-black text-blue-900">🏫 NVQ Vocational Training</h2>
                 <p class="text-slate-500 text-sm mt-1">Complete Guide – National Vocational Qualifications Sri Lanka</p>
                 <p class="ref-code mt-1">REF_CODE: 101-F-NVQ / 102-F-NVQ</p>
             </div>
-            <button onclick="closeModal('nvqModal')" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 flex-shrink-0"><i class="fas fa-times"></i></button>
+            <button data-action="closeModal" data-modal="nvqModal" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close NVQ modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
 
         <!-- TABS -->
         <div class="flex flex-wrap gap-2 mb-6 overflow-x-auto pb-1">
-            <button class="tab-btn active" onclick="switchTab('nvq', 'overview', this)">📖 Overview</button>
-            <button class="tab-btn" onclick="switchTab('nvq', 'levels', this)">📊 NVQ Levels</button>
-            <button class="tab-btn" onclick="switchTab('nvq', 'courses', this)">🛠️ Courses</button>
-            <button class="tab-btn" onclick="switchTab('nvq', 'salaries', this)">💰 Salaries</button>
-            <button class="tab-btn" onclick="switchTab('nvq', 'where', this)">🏛️ Where to Study</button>
-            <button class="tab-btn" onclick="switchTab('nvq', 'stories', this)">⭐ Career Stories</button>
+            <button class="tab-btn active" data-action="switchTab" data-namespace="nvq" data-tab="overview">📖 Overview</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="nvq" data-tab="levels">📊 NVQ Levels</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="nvq" data-tab="courses">🛠️ Courses</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="nvq" data-tab="salaries">💰 Salaries</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="nvq" data-tab="where">🏛️ Where to Study</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="nvq" data-tab="stories">⭐ Career Stories</button>
         </div>
 
         <!-- TAB: OVERVIEW -->
@@ -536,7 +555,7 @@
             <p class="text-slate-600 mb-4">Click each level to see details about duration, salary, and career path.</p>
 
             <div class="nvq-level">
-                <div class="nvq-level-header" onclick="toggleLevel(this)">
+                <div class="nvq-level-header" data-action="toggleLevel" role="button" tabindex="0" aria-expanded="false" aria-controls="nvq-l1-body">
                     <div><span class="font-black text-blue-700 text-lg">NVQ Level 1-2</span> <span class="text-slate-500 text-sm ml-2">Foundation / Entry</span></div>
                     <i class="fas fa-chevron-down text-blue-500"></i>
                 </div>
@@ -557,7 +576,7 @@
             </div>
 
             <div class="nvq-level">
-                <div class="nvq-level-header" onclick="toggleLevel(this)">
+                <div class="nvq-level-header" data-action="toggleLevel" role="button" tabindex="0" aria-expanded="false">
                     <div><span class="font-black text-green-700 text-lg">NVQ Level 3</span> <span class="text-slate-500 text-sm ml-2">Skilled Worker (= O/Level equivalent)</span></div>
                     <i class="fas fa-chevron-down text-green-500"></i>
                 </div>
@@ -581,7 +600,7 @@
             </div>
 
             <div class="nvq-level">
-                <div class="nvq-level-header" onclick="toggleLevel(this)">
+                <div class="nvq-level-header" data-action="toggleLevel" role="button" tabindex="0" aria-expanded="false">
                     <div><span class="font-black text-purple-700 text-lg">NVQ Level 4</span> <span class="text-slate-500 text-sm ml-2">Advanced Technician (= A/Level equivalent)</span></div>
                     <i class="fas fa-chevron-down text-purple-500"></i>
                 </div>
@@ -602,7 +621,7 @@
             </div>
 
             <div class="nvq-level">
-                <div class="nvq-level-header" onclick="toggleLevel(this)">
+                <div class="nvq-level-header" data-action="toggleLevel" role="button" tabindex="0" aria-expanded="false">
                     <div><span class="font-black text-orange-700 text-lg">NVQ Level 5</span> <span class="text-slate-500 text-sm ml-2">Diploma (University entry level)</span></div>
                     <i class="fas fa-chevron-down text-orange-500"></i>
                 </div>
@@ -623,7 +642,7 @@
             </div>
 
             <div class="nvq-level">
-                <div class="nvq-level-header" onclick="toggleLevel(this)">
+                <div class="nvq-level-header" data-action="toggleLevel" role="button" tabindex="0" aria-expanded="false">
                     <div><span class="font-black text-red-700 text-lg">NVQ Level 6-7</span> <span class="text-slate-500 text-sm ml-2">Higher Diploma / Degree Equivalent</span></div>
                     <i class="fas fa-chevron-down text-red-500"></i>
                 </div>
@@ -650,15 +669,16 @@
 
             <!-- Sub-tabs for course categories -->
             <div class="flex flex-wrap gap-2 mb-5">
-                <button class="tab-btn active" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'tech', this)">⚡ Technical</button>
-                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'it', this)">💻 IT</button>
-                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'health', this)">🏥 Healthcare</button>
-                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'hospitality', this)">🍳 Hospitality</button>
-                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'construction', this)">🏗️ Construction</button>
-                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" onclick="switchTab('course', 'other', this)">📦 Other</button>
+                <button class="tab-btn active" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="tech">⚡ Technical</button>
+                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="it">💻 IT</button>
+                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="health">🏥 Healthcare</button>
+                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="hospitality">🍳 Hospitality</button>
+                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="construction">🏗️ Construction</button>
+                <button class="tab-btn" style="font-size:0.8rem; padding: 0.35rem 0.75rem;" data-action="switchTab" data-namespace="course" data-tab="other">📦 Other</button>
             </div>
 
             <div id="course-tab-tech" class="tab-panel active overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>NVQ Level</th><th>Duration</th><th>SL Salary</th><th>Middle East</th><th>Demand</th><th>Cost</th></tr>
                     <tr><td><strong>Electrical Installation</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 70-150k</td><td>Rs. 200-450k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td><td>FREE at VTA</td></tr>
@@ -671,12 +691,15 @@
                     <tr><td><strong>Welding & Fabrication</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 70-150k</td><td>Rs. 200-450k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td><td>FREE at VTA</td></tr>
                     <tr><td><strong>Ship Mechanics / Maritime</strong></td><td>4-5</td><td>18-24 mo</td><td>Rs. 120-250k</td><td>Rs. 400-800k+</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td><td>50-100k</td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
                 <div class="warning-box mt-4 text-sm">
                     💡 <strong>Tip:</strong> Heavy Equipment Operation is the SHORTEST (3-6 months) with the HIGHEST immediate salary! Great if you're in a hurry.
                 </div>
             </div>
 
             <div id="course-tab-it" class="tab-panel overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>NVQ Level</th><th>Duration</th><th>SL Salary</th><th>Remote Potential</th><th>Demand</th></tr>
                     <tr><td><strong>ICT Technician</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 80-150k</td><td>Rs. 200-400k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
@@ -687,12 +710,15 @@
                     <tr><td><strong>Database Administration</strong></td><td>4-5</td><td>18-24 mo</td><td>Rs. 150-300k</td><td>Rs. 350-800k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
                     <tr><td><strong>Digital Marketing</strong></td><td>3-4</td><td>6-12 mo</td><td>Rs. 70-150k</td><td>Rs. 200-500k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
                 <div class="success-box mt-4 text-sm">
                     💡 <strong>IT Advantage:</strong> Web & Software developers can work REMOTELY for international companies and earn Rs. 500k–2.5M+/month from Sri Lanka!
                 </div>
             </div>
 
             <div id="course-tab-health" class="tab-panel overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>NVQ Level</th><th>Duration</th><th>SL Salary</th><th>Middle East / Global</th><th>Demand</th></tr>
                     <tr><td><strong>Nursing (Care Attendant)</strong></td><td>2-3</td><td>6-12 mo</td><td>Rs. 50-100k</td><td>Rs. 180-350k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
@@ -703,12 +729,15 @@
                     <tr><td><strong>Midwifery</strong></td><td>4-5</td><td>18-24 mo</td><td>Rs. 100-200k</td><td>Rs. 350-700k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
                     <tr><td><strong>Paramedic / Emergency</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 80-150k</td><td>Rs. 250-500k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
                 <div class="warning-box mt-4 text-sm">
                     🏥 <strong>Nursing is the #1 choice for overseas!</strong> Nurses get 2.5-4x salary increase in Middle East + Qatar has MASSIVE demand for nurses. FREE training at government nursing schools.
                 </div>
             </div>
 
             <div id="course-tab-hospitality" class="tab-panel overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>Level</th><th>Duration</th><th>SL Salary</th><th>Middle East</th><th>Demand</th></tr>
                     <tr><td><strong>Cookery / Chef</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 70-150k</td><td>Rs. 200-500k+</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
@@ -719,9 +748,12 @@
                     <tr><td><strong>Beauty / Cosmetology</strong></td><td>3-4</td><td>9-12 mo</td><td>Rs. 50-100k + tips</td><td>Rs. 150-350k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                     <tr><td><strong>Massage Therapy</strong></td><td>3</td><td>6-9 mo</td><td>Rs. 50-100k + tips</td><td>Rs. 180-400k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
             </div>
 
             <div id="course-tab-construction" class="tab-panel overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>Level</th><th>Duration</th><th>SL Salary</th><th>Middle East</th><th>Demand</th></tr>
                     <tr><td><strong>Masonry / Brickwork</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 60-120k</td><td>Rs. 180-400k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
@@ -731,9 +763,12 @@
                     <tr><td><strong>Quantity Surveying</strong></td><td>4-5</td><td>18-24 mo</td><td>Rs. 120-250k</td><td>Rs. 350-700k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                     <tr><td><strong>Construction Supervision</strong></td><td>4</td><td>18 mo</td><td>Rs. 100-200k</td><td>Rs. 300-600k</td><td><span class="demand-badge-4">⭐⭐⭐⭐</span></td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
             </div>
 
             <div id="course-tab-other" class="tab-panel overflow-x-auto">
+                <div class="table-responsive">
                 <table class="course-table">
                     <tr><th>Course</th><th>Level</th><th>Duration</th><th>SL Salary</th><th>Middle East</th><th>Demand</th></tr>
                     <tr><td><strong>HGV / LGV Driver</strong></td><td>2-3</td><td>3-6 mo</td><td>Rs. 60-120k</td><td>Rs. 200-400k</td><td><span class="demand-badge-5">⭐⭐⭐⭐⭐</span></td></tr>
@@ -745,6 +780,8 @@
                     <tr><td><strong>Agribusiness Management</strong></td><td>4</td><td>18 mo</td><td>Rs. 80-150k</td><td>–</td><td><span class="demand-badge-3">⭐⭐⭐</span></td></tr>
                     <tr><td><strong>Horticulture</strong></td><td>3-4</td><td>12-18 mo</td><td>Rs. 60-120k</td><td>Rs. 150-300k</td><td><span class="demand-badge-3">⭐⭐⭐</span></td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
+                </div>
                 <div class="success-box mt-4 text-sm">
                     ⚡ <strong>Fastest qualification:</strong> Forklift Operation (2-4 WEEKS!) → Get to work immediately. Perfect if you need income fast.
                 </div>
@@ -754,7 +791,7 @@
         <!-- TAB: SALARIES -->
         <div id="nvq-tab-salaries" class="tab-panel">
             <h3 class="font-bold text-lg text-slate-800 mb-4">Sri Lanka vs Middle East Salary Comparison</h3>
-            <div class="overflow-x-auto mb-6">
+            <div class="table-responsive overflow-x-auto mb-6">
                 <table class="salary-table">
                     <tr><th>Job</th><th>Sri Lanka</th><th>Saudi Arabia</th><th>UAE</th><th>Qatar</th><th>Multiplier</th></tr>
                     <tr><td><strong>Driver</strong></td><td>Rs. 40-80k</td><td>Rs. 180-300k</td><td>Rs. 200-350k</td><td>Rs. 200-350k</td><td class="multiplier-vhigh">4-7x ⬆️</td></tr>
@@ -767,6 +804,7 @@
                     <tr><td><strong>IT Technician</strong></td><td>Rs. 80-150k</td><td>Rs. 200-400k</td><td>Rs. 250-500k</td><td>Rs. 250-500k</td><td class="multiplier-high">2.5-4x ⬆️</td></tr>
                     <tr><td><strong>Helper / Laborer</strong></td><td>Rs. 30-60k</td><td>Rs. 150-280k</td><td>Rs. 160-300k</td><td>Rs. 160-300k</td><td class="multiplier-vhigh">5-8x ⬆️</td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
             </div>
 
             <div class="bg-green-800 text-white rounded-xl p-5 mb-6">
@@ -909,23 +947,23 @@
 </div>
 
 <!-- ========== MIDDLE EAST DETAIL MODAL ========== -->
-<div id="meModal" class="hidden modal-overlay" onclick="closeModalOnOverlay(event, 'meModal')">
+<div id="meModal" class="hidden modal-overlay" data-action="closeModalOnOverlay" data-modal="meModal" role="dialog" aria-modal="true" aria-labelledby="meModalTitle">
     <div class="modal-box scrollbar-thin">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h2 class="text-3xl font-black text-green-900">🌍 Middle East Employment Guide</h2>
+                <h2 id="meModalTitle" class="text-3xl font-black text-green-900">🌍 Middle East Employment Guide</h2>
                 <p class="text-slate-500 text-sm mt-1">Complete guide for Sri Lankans seeking employment in the Gulf</p>
                 <p class="ref-code mt-1">REF_CODE: 101-F-ME / 102-F-FOREIGN</p>
             </div>
-            <button onclick="closeModal('meModal')" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 flex-shrink-0"><i class="fas fa-times"></i></button>
+            <button data-action="closeModal" data-modal="meModal" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close Middle East modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
 
         <div class="flex flex-wrap gap-2 mb-6">
-            <button class="tab-btn active" onclick="switchTab('me', 'overview', this)">📖 Overview</button>
-            <button class="tab-btn" onclick="switchTab('me', 'countries', this)">🗺️ Countries</button>
-            <button class="tab-btn" onclick="switchTab('me', 'salaries', this)">💰 Salaries</button>
-            <button class="tab-btn" onclick="switchTab('me', 'process', this)">📋 Process</button>
-            <button class="tab-btn" onclick="switchTab('me', 'checklist', this)">✅ Contract Checklist</button>
+            <button class="tab-btn active" data-action="switchTab" data-namespace="me" data-tab="overview">📖 Overview</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="me" data-tab="countries">🗺️ Countries</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="me" data-tab="salaries">💰 Salaries</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="me" data-tab="process">📋 Process</button>
+            <button class="tab-btn" data-action="switchTab" data-namespace="me" data-tab="checklist">✅ Contract Checklist</button>
         </div>
 
         <!-- TAB: ME OVERVIEW -->
@@ -1069,7 +1107,7 @@
 
         <!-- TAB: SALARIES ME -->
         <div id="me-tab-salaries" class="tab-panel">
-            <div class="overflow-x-auto mb-6">
+            <div class="table-responsive overflow-x-auto mb-6">
                 <table class="salary-table">
                     <tr><th>Job Title</th><th>Sri Lanka</th><th>Saudi Arabia</th><th>UAE</th><th>Qatar</th><th>Multiplier</th></tr>
                     <tr><td><strong>Driver/Chauffeur</strong></td><td>Rs. 40-80k</td><td>Rs. 180-300k</td><td>Rs. 200-350k</td><td>Rs. 200-350k</td><td class="multiplier-vhigh">4-7x</td></tr>
@@ -1083,6 +1121,7 @@
                     <tr><td><strong>IT Technician</strong></td><td>Rs. 80-150k</td><td>Rs. 200-400k</td><td>Rs. 250-500k</td><td>Rs. 250-500k</td><td class="multiplier-high">2.5-4x</td></tr>
                     <tr><td><strong>Accountant</strong></td><td>Rs. 100-180k</td><td>Rs. 250-450k</td><td>Rs. 300-500k</td><td>Rs. 300-500k</td><td class="multiplier-high">2.5-4x</td></tr>
                 </table>
+                <div class="table-cards-mobile"></div>
             </div>
             <div class="success-box text-sm">
                 <strong>💡 Key insight:</strong> Lower-skilled jobs (driver, helper) get the BIGGEST multiplier (5-8x). Skilled jobs still get 2.5-4x. Most employers provide free housing, food, and medical, so you can save 80-90% of your salary!
@@ -1190,15 +1229,15 @@
 </div>
 
 <!-- ========== PROFESSIONAL CERTS MODAL ========== -->
-<div id="certModal" class="hidden modal-overlay" onclick="closeModalOnOverlay(event, 'certModal')">
+<div id="certModal" class="hidden modal-overlay" data-action="closeModalOnOverlay" data-modal="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
     <div class="modal-box scrollbar-thin">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h2 class="text-3xl font-black text-purple-900">🏆 Professional Certifications</h2>
+                <h2 id="certModalTitle" class="text-3xl font-black text-purple-900">🏆 Professional Certifications</h2>
                 <p class="text-slate-500 text-sm mt-1">High-value certifications to boost career & salary</p>
                 <p class="ref-code mt-1">REF_CODE: 102-F-CERT</p>
             </div>
-            <button onclick="closeModal('certModal')" class="text-slate-400 hover:text-slate-600 text-3xl ml-4"><i class="fas fa-times"></i></button>
+            <button data-action="closeModal" data-modal="certModal" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close certifications modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
 
         <div class="space-y-4">
@@ -1281,15 +1320,15 @@
 </div>
 
 <!-- ========== FOREIGN LANGUAGE MODAL ========== -->
-<div id="langModal" class="hidden modal-overlay" onclick="closeModalOnOverlay(event, 'langModal')">
+<div id="langModal" class="hidden modal-overlay" data-action="closeModalOnOverlay" data-modal="langModal" role="dialog" aria-modal="true" aria-labelledby="langModalTitle">
     <div class="modal-box scrollbar-thin">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h2 class="text-3xl font-black text-indigo-900">🗣️ Foreign Language Programs</h2>
+                <h2 id="langModalTitle" class="text-3xl font-black text-indigo-900">🗣️ Foreign Language Programs</h2>
                 <p class="text-slate-500 text-sm mt-1">Japan, South Korea, Germany – work & study abroad</p>
                 <p class="ref-code mt-1">REF_CODE: 101-F-LANG</p>
             </div>
-            <button onclick="closeModal('langModal')" class="text-slate-400 hover:text-slate-600 text-3xl ml-4"><i class="fas fa-times"></i></button>
+            <button data-action="closeModal" data-modal="langModal" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close language programs modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
 
         <div class="space-y-5">
@@ -1350,15 +1389,15 @@
 </div>
 
 <!-- ========== UNIVERSITY DETAIL MODAL ========== -->
-<div id="uniModal" class="hidden modal-overlay" onclick="closeModalOnOverlay(event, 'uniModal')">
+<div id="uniModal" class="hidden modal-overlay" data-action="closeModalOnOverlay" data-modal="uniModal" role="dialog" aria-modal="true" aria-labelledby="uniModalTitle">
     <div class="modal-box scrollbar-thin">
         <div class="flex justify-between items-start mb-6">
             <div>
-                <h2 class="text-3xl font-black text-blue-900">🎓 University Pathways Guide</h2>
+                <h2 id="uniModalTitle" class="text-3xl font-black text-blue-900">🎓 University Pathways Guide</h2>
                 <p class="text-slate-500 text-sm mt-1">State, Private, Open University and International options</p>
                 <p class="ref-code mt-1">REF_CODE: 102-P</p>
             </div>
-            <button onclick="closeModal('uniModal')" class="text-slate-400 hover:text-slate-600 text-3xl ml-4"><i class="fas fa-times"></i></button>
+            <button data-action="closeModal" data-modal="uniModal" class="text-slate-400 hover:text-slate-600 text-3xl ml-4 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Close university modal"><i class="fas fa-times" aria-hidden="true"></i></button>
         </div>
 
         <div class="space-y-5">
@@ -1372,7 +1411,7 @@
                 <div class="warning-box text-sm mb-3">
                     <strong>⚠️ Only 16% of A/L students get state university admission!</strong> Z-score system is very competitive.
                 </div>
-                <div class="overflow-x-auto">
+                <div class="table-responsive overflow-x-auto">
                     <table class="course-table text-sm">
                         <tr><th>Degree Field</th><th>Z-Score Needed</th><th>University</th><th>Salary After</th></tr>
                         <tr><td><strong>Medicine (MBBS)</strong></td><td>3.5+</td><td>Colombo, Peradeniya, Kelaniya</td><td>Rs. 200k-1.5M+</td></tr>
@@ -1382,6 +1421,7 @@
                         <tr><td><strong>Law</strong></td><td>2.5+</td><td>Sri Jayewardenepura, Colombo</td><td>Rs. 200k-2M+</td></tr>
                         <tr><td><strong>Sciences (Various)</strong></td><td>2.0+</td><td>Kelaniya, Ruhuna, Jaffna</td><td>Rs. 100k-500k+</td></tr>
                     </table>
+                    <div class="table-cards-mobile"></div>
                 </div>
             </div>
 
@@ -1430,7 +1470,7 @@
 
             <div class="border-2 border-orange-200 rounded-xl p-5">
                 <h3 class="font-black text-xl text-orange-800 mb-1">✈️ International University (Study Abroad)</h3>
-                <div class="overflow-x-auto">
+                <div class="table-responsive overflow-x-auto">
                     <table class="course-table text-sm">
                         <tr><th>Country</th><th>Annual Cost</th><th>Salary After</th><th>Work Rights</th><th>PR Possible</th></tr>
                         <tr><td>🇦🇺 Australia</td><td>AUD 25-40k/yr</td><td>Rs. 900k-1.3M+/mo</td><td>20hrs/week study</td><td>Yes (5-10 yrs)</td></tr>
@@ -1439,6 +1479,7 @@
                         <tr><td>🇩🇪 Germany</td><td>EUR 0-5k/yr</td><td>Rs. 700k-1.2M+/mo</td><td>20hrs/week study</td><td>Yes</td></tr>
                         <tr><td>🇲🇾 Malaysia</td><td>USD 5-15k/yr</td><td>Rs. 150k-400k/mo</td><td>Part time allowed</td><td>Difficult</td></tr>
                     </table>
+                    <div class="table-cards-mobile"></div>
                 </div>
                 <div class="info-box mt-3 text-sm">
                     <strong>💡 Cheapest route:</strong> Germany has universities with very low or NO tuition fees! Only need German language (B1/B2). Many SL students now study there for near-free.
@@ -1458,6 +1499,7 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
 // ========== STATE ==========
 let selectedMathGrade = null;
 let selectedScienceGrade = null;
@@ -1889,7 +1931,7 @@ function populateContainer(containerId, items, type) {
         const col3Label = hasCost ? 'Cost' : 'Abroad';
 
         const detailsHTML = item.details ? item.details.map(d => `<div class="text-sm text-slate-700 mb-1">${d}</div>`).join('') : '';
-        const btnHTML = item.modalId ? `<button onclick="openModal('${item.modalId}')" class="detail-btn mt-4"><i class="fas fa-expand-alt"></i> Full Details & Guide</button>` : '';
+        const btnHTML = item.modalId ? `<button data-action="openModal" data-modal="${item.modalId}" class="detail-btn mt-4"><i class="fas fa-expand-alt" aria-hidden="true"></i> Full Details & Guide</button>` : '';
 
         card.innerHTML = `
             <div class="absolute top-3 right-3 ref-code">${item.refCode}</div>
@@ -1921,12 +1963,11 @@ function selectScienceGrade(grade) {
 }
 
 function updateGradeUI() {
-    const allGradeButtons = document.querySelectorAll('.grade-option');
-    allGradeButtons.forEach((btn, idx) => btn.classList.remove('selected'));
-    allGradeButtons.forEach((btn, idx) => {
-        const grades = ['A', 'B', 'C', 'S'];
-        if (idx < 4 && grades[idx] === selectedMathGrade) btn.classList.add('selected');
-        if (idx >= 4 && grades[idx - 4] === selectedScienceGrade) btn.classList.add('selected');
+    document.querySelectorAll('[data-action="selectMathGrade"]').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.grade === selectedMathGrade);
+    });
+    document.querySelectorAll('[data-action="selectScienceGrade"]').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.grade === selectedScienceGrade);
     });
 }
 
@@ -1997,10 +2038,10 @@ function switchTab(namespace, tabId, btn) {
 // ========== NVQ LEVEL ACCORDION ==========
 function toggleLevel(header) {
     const body = header.nextElementSibling;
-    body.classList.toggle('open');
+    const isOpen = body.classList.toggle('open');
+    header.setAttribute('aria-expanded', isOpen);
     const icon = header.querySelector('i');
-    icon.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
-    icon.style.transition = 'transform 0.2s';
+    if (icon) { icon.style.transform = isOpen ? 'rotate(180deg)' : ''; icon.style.transition = 'transform 0.2s'; }
 }
 
 // ========== LANGUAGE TOGGLE ==========
@@ -2120,6 +2161,7 @@ function openFeedback() { document.getElementById('feedbackModal').classList.rem
 function closeFeedback() {
     document.getElementById('feedbackModal').classList.add('hidden');
     document.getElementById('feedbackText').value = '';
+    document.body.style.overflow = '';
 }
 function sendFeedback() {
     const feedback = document.getElementById('feedbackText').value;
@@ -2130,6 +2172,76 @@ function sendFeedback() {
         alert(currentLanguage === 'si' ? 'කරුණාකර ප්‍රතිචාරයක් ලියන්න!' : 'Please write some feedback first!');
     }
 }
+
+// ========== TABLE TO CARDS (MOBILE) ==========
+function initTableCards() {
+    document.querySelectorAll('.table-responsive').forEach(wrapper => {
+        const table = wrapper.querySelector('.course-table, .salary-table');
+        const cardsEl = wrapper.querySelector('.table-cards-mobile');
+        if (!table || !cardsEl) return;
+        const rows = Array.from(table.querySelectorAll('tr'));
+        const headerCells = rows[0] ? Array.from(rows[0].querySelectorAll('th')).map(th => th.textContent.trim()) : [];
+        rows.slice(1).forEach(tr => {
+            const cells = tr.querySelectorAll('td');
+            const card = document.createElement('div');
+            card.className = 'table-card-mobile';
+            let html = '';
+            cells.forEach((cell, i) => {
+                const label = headerCells[i] || '';
+                html += `<div class="card-cell"><strong>${label}:</strong> ${cell.innerHTML}</div>`;
+            });
+            card.innerHTML = html;
+            cardsEl.appendChild(card);
+        });
+    });
+}
+
+// ========== EVENT DELEGATION ==========
+document.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-action]');
+    if (!el) return;
+    const action = el.dataset.action;
+    if (action === 'showPage') {
+        showPage(el.dataset.page);
+    } else if (action === 'openModal') {
+        openModal(el.dataset.modal);
+    } else if (action === 'closeModal') {
+        closeModal(el.dataset.modal);
+    } else if (action === 'closeFeedback') {
+        closeFeedback();
+    } else if (action === 'closeModalOnOverlay') {
+        if (e.target.classList.contains('modal-overlay')) {
+            if (el.dataset.modal === 'feedbackModal') closeFeedback();
+            else closeModal(el.dataset.modal);
+        }
+    } else if (action === 'toggleLanguage') {
+        toggleLanguage();
+    } else if (action === 'selectMathGrade') {
+        selectMathGrade(el.dataset.grade);
+    } else if (action === 'selectScienceGrade') {
+        selectScienceGrade(el.dataset.grade);
+    } else if (action === 'resetGradeFilter') {
+        resetGradeFilter();
+    } else if (action === 'switchTab') {
+        switchTab(el.dataset.namespace, el.dataset.tab, el);
+    } else if (action === 'toggleLevel') {
+        toggleLevel(el);
+    } else if (action === 'sendFeedback') {
+        sendFeedback();
+    }
+});
+
+// NVQ level headers: keyboard support
+document.addEventListener('keydown', function(e) {
+    const el = e.target.closest('[data-action="toggleLevel"]');
+    if (el && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        toggleLevel(el);
+    }
+});
+
+initTableCards();
+}); // DOMContentLoaded
 </script>
 </body>
 </html>
